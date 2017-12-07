@@ -16,6 +16,7 @@
 <script>
   import YHeader from '/common/header'
   import YFooter from '/common/footer'
+  
   import { mapState, mapMutations } from 'vuex'
   export default {
     data () {

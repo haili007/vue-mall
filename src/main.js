@@ -15,10 +15,10 @@ Vue.use(VueLazyload, {
   // attempt: 1
 })
 Vue.config.productionTip = false
-const whiteList = ['/home', '/goods', '/login', '/goodsDetails'] // 不需要登陆的页面
+const whiteList = ['/home', '/goods', '/login', '/goodsDetails', '/register'] // 不需要登陆的页面
 router.beforeEach(function (to, from, next) {
   userInfo().then(res => {
-    if (res.status === '1') { // 没登录
+    if (res.status === '1'&& !(to.path.indexOf("/search/")>-1)) { // 没登录
       if (whiteList.indexOf(to.path) !== -1) { // 白名单
         next()
       } else {
@@ -33,7 +33,23 @@ router.beforeEach(function (to, from, next) {
     }
   })
 })
+
+router.afterEach(function (to, from, next) {
+  document.documentElement.scrollTop=0;
+})
+
 /* eslint-disable no-new */
+let map = {};
+window.onhashchange=function(){
+  setTimeout(function(){
+    document.documentElement.scrollTop= map[location.hash];
+  },240);
+}
+window.onscroll = function() {
+  console.log(map);
+  map[location.hash] = document.documentElement.scrollTop;
+}
+
 new Vue({
   el: '#app',
   store,

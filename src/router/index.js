@@ -2,6 +2,9 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const Index = resolve => require(['/page/index'], resolve)
 const Login = resolve => require(['/page/login/login'], resolve)
+
+const Register = resolve => require(['/page/login/register'], resolve)
+
 const Home = resolve => require(['/page/Home/home'], resolve)
 const GoodS = resolve => require(['/page/Goods/goods'], resolve)
 const goodsDetails = resolve => require(['/page/Goods/goodsDetails'], resolve)
@@ -17,6 +20,8 @@ const support = resolve => require(['/page/User/children/support'], resolve)
 const checkout = resolve => require(['/page/Checkout/checkout'], resolve)
 const payment = resolve => require(['/page/Order/payment'], resolve)
 const paysuccess = resolve => require(['/page/Order/paysuccess'], resolve)
+
+
 Vue.use(Router)
 export default new Router({
   routes: [
@@ -28,10 +33,12 @@ export default new Router({
       children: [
         {path: 'home', component: Home},
         {path: 'goods', component: GoodS},
+        {path: '/search/:keyword', name:"search", component: GoodS},
         {path: 'goodsDetails', name: 'goodsDetails', component: goodsDetails}
       ]
     },
     {path: '/login', name: 'login', component: Login},
+    {path: '/register', name: 'register', component: Register},
     {path: '/cart', name: 'cart', component: Cart},
     {
       path: '/order',
@@ -57,6 +64,7 @@ export default new Router({
       ]
     },
     {path: '/checkout', name: 'checkout', component: checkout},
+    
     {path: '*', redirect: '/home'}
   ]
 })

@@ -153,9 +153,6 @@
   }
 
   .goods-box {
-    *{
-      box-sizing: border-box;
-    }
     > div {
       float: left;
       border: 1px solid #efefef;
