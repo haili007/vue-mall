@@ -10,10 +10,10 @@
           <Search></Search>
        </div>   
         <div class="ys-top-barcon clearfix">
-            <a class="turl ys-head-cart fr" target="_blank">
-                <b class="iconfont icon icon-gouwuche"></b>购物车
+          <router-link class="turl ys-head-cart fr" target="_blank" to="/cart">
+               <b class="iconfont icon icon-gouwuche"></b>购物车
                 <span id="carNum">(0)</span>
-            </a>
+          </router-link>
             <span v-if="login" class="turl Chead-welcome fr" >
                         <router-link to="/user/orderList">我的订单</router-link>|
                         <router-link to="/user/information">账号资料</router-link>|
@@ -35,7 +35,11 @@
                   <router-link class="active" to="/home">首页</router-link>
                 </div>
                 <div class="nav-item">
-                  <router-link to="/home">包袋</router-link>
+                  <router-link to="/category/1">包袋</router-link>
+                  <router-link to="/category/2">腕表</router-link>
+                  <router-link to="/category/3">珠宝</router-link>
+                  <router-link to="/category/4">配饰</router-link>
+                  <router-link to="/category/5">其他</router-link>
                 </div>
             </div>
         </div>
@@ -44,7 +48,7 @@
 </template>
 <script>
   import YButton from '/components/YButton'
-  import Search from '/components/searchbar'
+  import Search from '/components/searchBar'
   import { mapMutations, mapState } from 'vuex'
   import { getCartList, cartDel } from '/api/goods'
   import { loginOut } from '/api/index'

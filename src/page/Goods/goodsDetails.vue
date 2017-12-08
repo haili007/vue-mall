@@ -28,10 +28,21 @@
               <em>¥</em><i>{{product.salePrice}}</i></span>
           </h6>
         </div>
-        <div class="num">
-          <span class="params-name">数量</span>
-          <buy-num @edit-num="editNum" :limit="Number(product.limit_num)"></buy-num>
+        <div class="good-props">
+            <dl>
+              <dt>成色：</dt><dd>9成新</dd>
+            </dl>
+            <dl>
+              <dt>颜色：</dt><dd>红</dd>
+            </dl>
+            <dl>
+              <dt>型号：</dt><dd>JFS398248</dd>
+            </dl>
         </div>
+        <div class="good-tips">
+            温馨提示：
+        </div>
+        
         <div class="buy">
           <y-button text="加入购物车"
                     @btnClick="addCart(product.productId,product.salePrice,product.productName,product.productImageBig)"
@@ -270,4 +281,15 @@
       font-size: 24px;
     }
   }
+
+  .good-props{
+    dl{
+      dt,dd{
+        display: inline;
+      }
+
+    }
+  }
+
+
 </style>

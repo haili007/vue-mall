@@ -1,8 +1,8 @@
 {
-  "name": "vue-node-mall",
+  "name": "vue-youshe-mall",
   "version": "1.0.0",
   "description": "A Vue.js project",
-  "author": "yucccc <13450003105@163.com>",
+  "author": "tanghh <491331418@qq.com>",
   "private": true,
   "scripts": {
     "dev": "node build/dev-server.js",
@@ -34,6 +34,7 @@
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.0",
     "element-theme-default": "^1.3.7",
+    "element-ui": "^2.0.7",
     "eslint": "^3.19.0",
     "eslint-config-standard": "^6.2.1",
     "eslint-friendly-formatter": "^2.0.7",

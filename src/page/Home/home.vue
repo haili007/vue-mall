@@ -1,41 +1,19 @@
 <template>
   <div>
-    <div class="banner">
-      <div class="bg" ref="bg"
-           @mouseover="bgOver($refs.bg)"
-           @mousemove="bgMove($refs.bg,$event)"
-           @mouseout="bgOut($refs.bg)">
-        <span class="img a"></span>
-        <span class="text b">以傲慢与偏执<br/>回敬傲慢与偏见</span>
-        <span class="copyright c">code by qingjin.me | picture from t.tt</span>
-      </div>
-    </div>
-
-
-    <section class="w mt30 clearfix">
-      <y-shelf title="热门商品">
-        <div slot="content" class="hot">
-          <mall-goods :msg="item" v-for="(item,i) in hot" :key="i"></mall-goods>
-        </div>
-      </y-shelf>
+    
+    <section  class="w mt30 clearfix" >
+      <select-condition></select-condition>
     </section>
-    <section class="w mt30 clearfix" v-for="(item,i) in floors" :key="i">
-      <y-shelf :title="item.title">
-        <div slot="content" class="floors">
-          <div class="imgbanner">
-            <img v-lazy="floors[i].image.image" :alt="item.title">
-          </div>
-          <mall-goods :msg="tab" v-for="(tab,i) in item.tabs" :key="i"></mall-goods>
-        </div>
-      </y-shelf>
+
+    <section class="w mt30 clearfix" >
+        <goods></goods>
     </section>
   </div>
 </template>
 <script>
   import {productHome} from '/api/index.js'
-  import YShelf from '/components/shelf'
-  import product from '/components/product'
-  import mallGoods from '/components/mallGoods'
+  import selectCondition from '/components/selectCondition'
+  import goods from '/page/Goods/goods'
   export default {
     data () {
       return {
@@ -88,9 +66,8 @@
       })
     },
     components: {
-      YShelf,
-      product,
-      mallGoods
+      goods,
+      selectCondition
     }
   }
 </script>

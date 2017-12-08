@@ -6,6 +6,10 @@ import VueLazyload from 'vue-lazyload'
 import infiniteScroll from 'vue-infinite-scroll'
 import VueCookie from 'vue-cookie'
 import { userInfo } from './api'
+import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+
+Vue.use(ElementUI)
 Vue.use(infiniteScroll)
 Vue.use(VueCookie)
 Vue.use(VueLazyload, {
@@ -18,8 +22,8 @@ Vue.config.productionTip = false
 const whiteList = ['/home', '/goods', '/login', '/goodsDetails', '/register'] // 不需要登陆的页面
 router.beforeEach(function (to, from, next) {
   userInfo().then(res => {
-    if (res.status === '1'&& !(to.path.indexOf("/search/")>-1)) { // 没登录
-      if (whiteList.indexOf(to.path) !== -1) { // 白名单
+    if (res.status === '1') { // 没登录
+      if (whiteList.indexOf(to.path) !== -1||(to.path.indexOf("/search/")>-1||to.path.indexOf("/category/")>-1)) { // 白名单
         next()
       } else {
         next('/login')

@@ -5,20 +5,7 @@
     </y-header>
     <div class="w">
       <div class="content">
-        <div class="account-sidebar">
-          <div class="avatar gray-box ">
-            <div>
-              <img :src="userInfo.info.avatar"> <h5>
-              {{userInfo.info.name}}</h5></div>
-            <div class="box-inner">
-              <ul class="account-nav">
-                <li v-for="(item,i) in nav" :key='i' :class="{current:item.name===title}"
-                    @click="tab(item)">
-                  <a href="javascript:;">{{item.name}}</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
+        <account-aside :nav="nav" :title="title"></account-aside>
         <div class="account-content">
           <router-view></router-view>
         </div>
@@ -32,6 +19,7 @@
 <script>
   import YFooter from '/common/footer'
   import YHeader from '/common/header'
+  import accountAside from '/components/accountAside'
   import { mapState } from 'vuex'
   export default {
     data () {
@@ -66,7 +54,8 @@
     },
     components: {
       YFooter,
-      YHeader
+      YHeader,
+      accountAside
     },
     watch: {
       $route (to) {
@@ -96,7 +85,7 @@
     width: 210px;
     border-radius: 6px;
     .avatar {
-      padding-top: 20px;
+      
       border-radius: 10px;
       text-align: center;
       img {
@@ -104,47 +93,14 @@
         height: 168px;
       }
       h5 {
-        font-size: 18px;
-        line-height: 48px;
-        font-weight: 700;
-      }
-    }
-    .account-nav {
-      padding-top: 15px;
-      li {
-        position: relative;
-        height: 48px;
-        border-top: 1px solid #EBEBEB;
-        line-height: 48px;
-        &:hover {
-          a {
-            position: relative;
-            z-index: 1;
-            height: 50px;
-            background-color: #98AFEE;
-            line-height: 50px;
-            color: #FFF;
-          }
-
-        }
-        a {
-          display: block;
-        }
-        &.current {
-          a {
-            position: relative;
-            z-index: 1;
-            height: 50px;
-            background-color: #98AFEE;
-            line-height: 50px;
-            color: #FFF;
-          }
-        }
-
+        height: 40px;
+        line-height: 40px;
+        padding-left: 12px;
+        font-size: 14px;
+        text-align: left;
       }
     }
   }
-
   .account-content {
     margin-left: 20px;
     flex: 1;
