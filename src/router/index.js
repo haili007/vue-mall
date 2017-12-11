@@ -17,10 +17,10 @@ const addressList = resolve => require(['/page/User/children/addressList'], reso
 const coupon = resolve => require(['/page/User/children/coupon'], resolve)
 const aihuishou = resolve => require(['/page/User/children/aihuishou'], resolve)
 const support = resolve => require(['/page/User/children/support'], resolve)
-const BasicInfo = resolve => require(['/page/User/children/Goods/BasicInfo'], resolve)
-const Audit = resolve => require(['/page/User/children/Goods/Audit'], resolve)
-const Check = resolve => require(['/page/User/children/Goods/Check'], resolve)
-const Manage = resolve => require(['/page/User/children/Goods/Manage'], resolve)
+const BasicInfo = resolve => require(['/page/User/business/BasicInfo'], resolve)
+const Audit = resolve => require(['/page/User/business/Audit'], resolve)
+const Check = resolve => require(['/page/User/business/Check'], resolve)
+const Manage = resolve => require(['/page/User/business/Manage'], resolve)
 const checkout = resolve => require(['/page/Checkout/checkout'], resolve)
 const payment = resolve => require(['/page/Order/payment'], resolve)
 const paysuccess = resolve => require(['/page/Order/paysuccess'], resolve)
@@ -60,17 +60,8 @@ export default new Router({
       component: user,
       redirect: '/user/orderList',
       children: [
-        {
-          path: 'business',
-          redirect: '/user/business/information', 
-          component: information,
-          name: '订单列表', 
-          children: [
-            {path: 'information', name: '账户资料', component: information},
-          ]
-        },
+        {path: 'business/information',redirect: '', component: information, name: '商家信息' },
         {path: 'orderList', name: '订单列表', component: orderList},
-        {path: 'information', name: '账户资料', component: information},
         {path: 'addressList', name: '收货地址', component: addressList},
         {path: 'coupon', name: '我的优惠', component: coupon},
         {path: 'support', name: '售后服务', component: support},
