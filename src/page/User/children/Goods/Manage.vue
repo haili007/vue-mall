@@ -1,8 +1,7 @@
 <template>
   <div>
-    <y-shelf title="商品管理—发布商品—商品基本信息">
-      <div slot="content">
-        <div style="margin: 20px;"></div>
+    <y-shelf title="商品管理">
+      <div slot="content" style="margin: 20px">
         <lqb-form v-model="values" :data="forms" from-type="LineForm">
             <el-button>查询</el-button>
             <el-button type="primary">+ 新增</el-button>
@@ -12,16 +11,11 @@
             border
             style="width: 100%">
             <el-table-column label='序号' type='index' fit align='center'></el-table-column>
-            <el-table-column label='手机账号' prop='name' fit align='center'></el-table-column>
-            <el-table-column label='是否认证' fit align='center'></el-table-column>
-            <el-table-column label='会员姓名' fit align='center'></el-table-column>
-            <el-table-column label='会员级别' fit align='center'></el-table-column>
-            <el-table-column label='注册时间' fit align='center'></el-table-column>
-            <el-table-column label='渠道来源' fit align='center'></el-table-column>
-            <el-table-column label='邀请人' fit align='center'></el-table-column>
-            <el-table-column label='累计注册天数(天)' fit align='center'></el-table-column>
-            <el-table-column label='累计投资总额(元)' fit align='center'></el-table-column>
-            <el-table-column label='会员状态' fit align='center'></el-table-column>
+            <el-table-column label='商品' prop='name' fit align='center'></el-table-column>
+            <el-table-column label='商品编号' fit align='center'></el-table-column>
+            <el-table-column label='价格' fit align='center'></el-table-column>
+            <el-table-column label='发布时间' fit align='center'></el-table-column>
+            <el-table-column label='商品状态' fit align='center'></el-table-column>
             <el-table-column label='操作' fit align='center' width=200>
                 <template slot-scope='scope'>
                     <el-button type='text'>明细</el-button>
@@ -40,6 +34,16 @@
                 </template>
             </el-table-column>
           </el-table>
+          <div style="margin: 20px;"></div>
+          <el-pagination
+              @size-change="handleSizeChange"
+              @current-change="handleCurrentChange"
+              :current-page="page.currentPage"
+              :page-sizes="[100, 200, 300, 400]"
+              :page-size="100"
+              layout="total, sizes, prev, pager, next, jumper"
+              :total="400">
+          </el-pagination>
       </div>
     </y-shelf>
   </div>
@@ -53,15 +57,10 @@
     data () {
       return {
         forms:[
-            {"name":"Input",label:"手机号码","model":"Kist",placeholder:"请输入手机号码"},
-            {"name":"Input",label:"会员姓名","model":"Kist",placeholder:"请输入会员姓名"},
-            {"name":"Select",label:"渠道来源","model":"Kist",placeholder:"请输入渠道来源"},
+            {"name":"Input",label:"商品名称","model":"Kist",placeholder:"请输入商品名称"},
+            {"name":"Select",label:"商品状态","model":"Kist",placeholder:"请选择商品状态"},
             {"name":"DatePicker",label:"注册时间",type:'datetimerange',"model":"Kist",placeholder:"请输入注册时间"},
-            {"name":"Select",label:"会员级别","model":"Kist",placeholder:"请输入会员级别"},
-            {"name":"Select",label:"是否实名","model":"Kist",placeholder:"请输入是否实名"},
-            {"name":"Select",label:"会员状态","model":"Kist",placeholder:"请输入会员状态"},
-            {"name":"Input",label:"邀请人","model":"Kist",placeholder:"请输入邀请人"}
-
+            {"name":"Select",label:"商品编号","model":"Kist",placeholder:"请输入商品编号"},
           ],
           rule:{
           },
@@ -76,19 +75,12 @@
               date: '2016-05-02',
               name: '王小虎',
               address: '上海市普陀区金沙江路 1518 弄'
-            }, {
-              date: '2016-05-04',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1517 弄'
-            }, {
-              date: '2016-05-01',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1519 弄'
-            }, {
-              date: '2016-05-03',
-              name: '王小虎',
-              address: '上海市普陀区金沙江路 1516 弄'
-            }]
+            }],
+          page:{
+            currentPage:1,
+            pageSize:10,
+            total:null
+          }
       }
     },
     computed: {
