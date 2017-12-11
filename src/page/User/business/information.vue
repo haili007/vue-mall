@@ -6,9 +6,7 @@
        </span>
        <div>
          <lqb-form v-model="formvalues" :data="forms"  from-type="LineForm" >
-           <div slot="address">
-            <span style="display: inline-block;">
-              <span class="lqb-form-compontent" style="min-width: 260px;">
+              <span slot="address" class="lqb-form-compontent" style="min-width: 260px;">
                 <span class="lqb-comtitle">商家地址：</span> 
                   <el-cascader
                     expand-trigger="hover"
@@ -17,8 +15,7 @@
                     @change="handleChange">
                   </el-cascader>
                 </span>
-              </span>
-           </div>
+                
            <div>
              <span>
 
