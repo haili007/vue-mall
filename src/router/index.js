@@ -12,7 +12,7 @@ const Cart = resolve => require(['/page/Cart/cart'], resolve)
 const order = resolve => require(['/page/Order/order'], resolve)
 const user = resolve => require(['/page/User/user'], resolve)
 const orderList = resolve => require(['/page/User/children/order'], resolve)
-const information = resolve => require(['/page/User/children/information'], resolve)
+const information = resolve => require(['/page/User/children/business/information'], resolve)
 const addressList = resolve => require(['/page/User/children/addressList'], resolve)
 const coupon = resolve => require(['/page/User/children/coupon'], resolve)
 const aihuishou = resolve => require(['/page/User/children/aihuishou'], resolve)
@@ -60,6 +60,15 @@ export default new Router({
       component: user,
       redirect: '/user/orderList',
       children: [
+        {
+          path: 'business',
+          redirect: '/user/business/information', 
+          component: information,
+          name: '订单列表', 
+          children: [
+            {path: 'information', name: '账户资料', component: information},
+          ]
+        },
         {path: 'orderList', name: '订单列表', component: orderList},
         {path: 'information', name: '账户资料', component: information},
         {path: 'addressList', name: '收货地址', component: addressList},
