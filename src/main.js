@@ -7,9 +7,10 @@ import infiniteScroll from 'vue-infinite-scroll'
 import VueCookie from 'vue-cookie'
 import { userInfo } from './api'
 import ElementUI from 'element-ui'
+import lqbUI from '../lib/lgbui.min'
 import 'element-ui/lib/theme-chalk/index.css'
-
 Vue.use(ElementUI)
+Vue.use(lqbUI)
 Vue.use(infiniteScroll)
 Vue.use(VueCookie)
 Vue.use(VueLazyload, {
@@ -50,7 +51,6 @@ window.onhashchange=function(){
   },240);
 }
 window.onscroll = function() {
-  console.log(map);
   map[location.hash] = document.documentElement.scrollTop;
 }
 
