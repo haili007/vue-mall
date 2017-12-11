@@ -17,6 +17,10 @@ const addressList = resolve => require(['/page/User/children/addressList'], reso
 const coupon = resolve => require(['/page/User/children/coupon'], resolve)
 const aihuishou = resolve => require(['/page/User/children/aihuishou'], resolve)
 const support = resolve => require(['/page/User/children/support'], resolve)
+const BasicInfo = resolve => require(['/page/User/children/Goods/BasicInfo'], resolve)
+const Audit = resolve => require(['/page/User/children/Goods/Audit'], resolve)
+const Check = resolve => require(['/page/User/children/Goods/Check'], resolve)
+const Manage = resolve => require(['/page/User/children/Goods/Manage'], resolve)
 const checkout = resolve => require(['/page/Checkout/checkout'], resolve)
 const payment = resolve => require(['/page/Order/payment'], resolve)
 const paysuccess = resolve => require(['/page/Order/paysuccess'], resolve)
@@ -61,11 +65,15 @@ export default new Router({
         {path: 'addressList', name: '收货地址', component: addressList},
         {path: 'coupon', name: '我的优惠', component: coupon},
         {path: 'support', name: '售后服务', component: support},
-        {path: 'aihuishou', name: '以旧换新', component: aihuishou}
+        {path: 'aihuishou', name: '以旧换新', component: aihuishou},
+        {path: 'information/basicInfo', name: '基本信息', component: BasicInfo},
+        {path: 'information/audit', name: '审核', component: Audit},
+        {path: 'information/check', name: '查看', component: Check},
+        {path: 'information/Manage', name: '管理', component: Manage},
       ]
     },
     {path: '/checkout', name: 'checkout', component: checkout},
-    
+
     {path: '*', redirect: '/home'}
   ]
 })
