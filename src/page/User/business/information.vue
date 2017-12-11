@@ -5,22 +5,11 @@
          商家基本信息：
        </span>
        <div>
-         <div class="ys-row">
-              <div class="span4">
-                  <label><span>张三：</span><input  /></label>
-              </div>
-              <div class="span8">
-                  <label><span>手机号码：</span><input  /></label>
-              </div>
-         </div>
-          <div class="ys-row">
-              <div class="span4">
-                  <label><span>张三：</span><input  /></label>
-              </div>
-              <div class="span8">
-                  <label><span>手机号码：</span><input  /></label>
-              </div>
-         </div>
+         <lqb-form v-model="formvalues" :data="forms"  from-type="RowForm" >
+           <div slot="address">
+             <span>ssss</span>
+           </div>
+         </lqb-form>
        </div>
     </lqb-card>
     <lqb-card style="margin-top:10px">
@@ -61,6 +50,15 @@
           img: '',
           zoom: 0
         },
+        forms:[
+            {"name":"Input",label:"联系人","model":"userName",placeholder:"金额"},
+             {"name":"Input",label:"手机号码","model":"tel",placeholder:"金额"},
+            {"slotname":"address"},
+             {"name":"Input",label:"详细地址","addressDetail":"Kist",placeholder:"金额"},
+          ],
+        formvalues:{
+            "userName":"18541414451",
+          },
         fixedNumber: [1, 1],
         example2: {
           info: true,
