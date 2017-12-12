@@ -21,6 +21,8 @@ const BasicInfo = resolve => require(['/page/User/business/BasicInfo'], resolve)
 const Audit = resolve => require(['/page/User/business/Audit'], resolve)
 const Check = resolve => require(['/page/User/business/Check'], resolve)
 const Manage = resolve => require(['/page/User/business/Manage'], resolve)
+const Order = resolve => require(['/page/User/business/Order'], resolve)
+const OrderDetail = resolve => require(['/page/User/business/OrderDetail'], resolve)
 const checkout = resolve => require(['/page/Checkout/checkout'], resolve)
 const payment = resolve => require(['/page/Order/payment'], resolve)
 const paysuccess = resolve => require(['/page/Order/paysuccess'], resolve)
@@ -69,7 +71,9 @@ export default new Router({
         {path: 'information/basicInfo', name: '基本信息', component: BasicInfo},
         {path: 'information/audit', name: '审核', component: Audit},
         {path: 'information/check', name: '查看', component: Check},
-        {path: 'information/Manage', name: '管理', component: Manage},
+        {path: 'information/manage', name: '管理', component: Manage},
+        {path: 'information/order', name: '订单', component: Order},
+        {path: 'information/orderDetail', name: '订单详情', component: OrderDetail},
       ]
     },
     {path: '/checkout', name: 'checkout', component: checkout},
