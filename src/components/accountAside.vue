@@ -9,10 +9,10 @@
                     <dl>
                         <dt>我是买家</dt>
                         <dd>
-                            <a href="#">我的采购订单</a>
+                            <router-link to="/user/buyer/orderList">我的采购订单</router-link>
                         </dd>
                         <dd>
-                            <a href="#">我的购物车</a>
+                            <router-link to="/cart">我的购物车</router-link>
                         </dd>
                     </dl>
                 </li>
@@ -42,7 +42,7 @@
                     <dl>
                         <dt>商家中心</dt>
                         <dd>
-                            <a href="#">商家信息</a>
+                            <router-link to="/user/business/information">商家信息</router-link>
                         </dd>
                     </dl>
                 </li>
@@ -82,6 +82,9 @@ export default {
   .account-sidebar {
     width: 210px;
     border-radius: 6px;
+    .gray-box{
+       box-shadow: 5px 5px 5px rgba(0 , 0, 0, 0.1);
+    }
     .avatar {
       
       border-radius: 10px;

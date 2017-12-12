@@ -11,7 +11,15 @@ const goodsDetails = resolve => require(['/page/Goods/goodsDetails'], resolve)
 const Cart = resolve => require(['/page/Cart/cart'], resolve)
 const order = resolve => require(['/page/Order/order'], resolve)
 const user = resolve => require(['/page/User/user'], resolve)
-const orderList = resolve => require(['/page/User/children/order'], resolve)
+//订单
+const orderList = resolve => require(['/page/User/buyer/orderList'], resolve)
+const orderDetail = resolve => require(['/page/User/buyer/orderDetail'], resolve)
+
+//消息
+const mymessge = resolve => require(['/page/User/messages/my'], resolve)
+const messgeDetail = resolve => require(['/page/User/messages/detail'], resolve)
+
+
 const information = resolve => require(['/page/User/business/information'], resolve)
 const addressList = resolve => require(['/page/User/children/addressList'], resolve)
 const coupon = resolve => require(['/page/User/children/coupon'], resolve)
@@ -63,7 +71,14 @@ export default new Router({
       redirect: '/user/orderList',
       children: [
         {path: 'business/information',redirect: '', component: information, name: '商家信息' },
-        {path: 'orderList', name: '订单列表', component: orderList},
+        {path: 'buyer/orderList', name: '买家订单列表', component: orderList},
+        {path: 'buyer/orderDetail', name: '订单详情', component: orderDetail},
+
+        //消息
+        {path: 'messages/my', name: '收货地址', component: mymessge},
+        {path: 'messages/detail', name: '收货地址', component: messgeDetail},
+
+
         {path: 'addressList', name: '收货地址', component: addressList},
         {path: 'coupon', name: '我的优惠', component: coupon},
         {path: 'support', name: '售后服务', component: support},

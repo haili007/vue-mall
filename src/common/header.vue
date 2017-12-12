@@ -15,7 +15,7 @@
                 <span id="carNum">(0)</span>
           </router-link>
             <span v-if="login" class="turl Chead-welcome fr" >
-                        <router-link to="/user/orderList">我的订单</router-link>|
+                        <router-link to="/user/buyer/orderList">我的订单</router-link>|
                         <router-link to="/user/information">账号资料</router-link>|
                         <router-link to="/user/addressList">收货地址</router-link>|
                         <router-link to="/user/support">售后服务</router-link>|
