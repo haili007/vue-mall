@@ -15,7 +15,8 @@
                     @change="handleChange">
                   </el-cascader>
                 </span>
-                
+                <el-button style="margin-left:26px" type="info">保存</el-button>
+                <el-button type="info">修改登录密码</el-button>
            <div>
              <span>
 
@@ -29,12 +30,19 @@
          商家二维码：
        </span>
        <div>
-         <div class="lqb-row">
-              <div class="">
-                  <img  />
+         <el-row>
+          <el-col :gutter="20" :span="12">
+            <div style="text-align:center;padding:20px 0;">
+                <img src="../../../assets/images/1513043183.png" />
+            </div>
+          </el-col>
+          <el-col :span="12">
+              <div style="padding-top:20px;">
+                  备注：实体店会员可通过扫描该二维码绑定手机号码成为会员；<br/>
+                  绑定后会员可享受商家鉴定及养护服务
               </div>
-
-         </div>
+          </el-col>
+        </el-row>
 
        </div>
     </lqb-card>
@@ -354,6 +362,7 @@
     .span4{
         width: 4/12%;
         float: left;
+        
     }
     .span8{
         width: 8/12%;

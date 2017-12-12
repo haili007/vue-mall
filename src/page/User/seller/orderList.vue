@@ -1,63 +1,63 @@
 <template>
   <div>
-    <y-shelf title="我的订单">
-      <div slot="content">
-        <div v-if="orderList.length">
-          <div v-for="(item,i) in orderList" :key="i">
-            <div class="gray-sub-title cart-title">
-              <div class="first">
-                <div>
-                  <span class="date" v-text="item.createDate"></span>
-                  <span class="order-id"> 订单号： <a href="javascript:;">{{item.orderId}}</a> </span>
-                </div>
-                <div class="f-bc">
-                  <span class="price">单价</span>
-                  <span class="num">数量</span>
-                  <span class="operation">商品操作</span>
-                </div>
-              </div>
-              <div class="last">
-                <span class="sub-total">实付金额</span>
-                <span class="order-detail"> <a href="javascript:;">查看详情<em class="icon-font"></em></a> </span>
-              </div>
-            </div>
-            <div class="pr">
-              <div class="cart" v-for="(good,j) in item.goodsList" :key="j">
-                <div class="cart-l" :class="{bt:j>0}">
-                  <div class="car-l-l">
-                    <div class="img-box"><img
-                      :src="good.productImg"
-                      alt=""></div>
-                    <div class="ellipsis">{{good.productName}}</div>
-                  </div>
-                  <div class="cart-l-r">
-                    <div>¥ {{good.productPrice}}</div>
-                    <div class="num">{{good.productNum}}</div>
-                    <div class="type"><a @click="_delOrder(item.orderId,i)" href="javascript:;" v-if="j<1"
-                                         class="del-order">删除此订单</a>
-                    </div>
-                  </div>
-                </div>
-                <div class="cart-r">
-                  <span></span>
-                  <span></span>
-                </div>
-              </div>
-              <div class="prod-operation pa" style="right: 0;top: 0;">
-                <div class="total">¥ {{item.orderTotal}}</div>
-                <div class="status"> {{item.orderStatus === '1' ? '已支付' : '已关闭'}}  </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div v-else>
-          <div style="padding: 100px 0;text-align: center">
-            你还未创建过订单
-          </div>
-        </div>
-      </div>
-    </y-shelf>
+    <lqb-card>
+      <span slot="header">我的销售订单：</span>
+      <lqb-form v-model="formvalues" :data="forms"  from-type="LineForm" >
+        <el-button style="margin-left:26px" type="info">查询</el-button>
+      </lqb-form>
+    </lqb-card>
+    <lqb-card>
+      <el-tabs v-model="activeName" @tab-click="handleClick">
+          <el-tab-pane :label="'全部订单('+activeName+')'" name="first"></el-tab-pane>
+          <el-tab-pane label="待鉴定" name="second"></el-tab-pane>
+          <el-tab-pane label="已鉴定" name="third"></el-tab-pane>
+      </el-tabs>
+      <el-table
+        :data="tableData5"
+        tooltip-effect="dark"
+        style="width: 100%">
+        <el-table-column
+            prop="name"
+            label="商品信息"
+            fit
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="address"
+            label="售价/数量"
+            fit
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="address"
+            label="鉴定费用"
+            fit
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="address"
+            label="鉴定状态"
+            fit
+            align="center">
+        </el-table-column>
+        <el-table-column
+            prop="address"
+            label="操作"
+            fit
+            align="center">
+        </el-table-column>
+    </el-table>
+    <el-pagination
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange"
+      :current-page="page.currentPage"
+      :page-sizes="[100, 200, 300, 400]"
+      :page-size="100"
+      layout="total, sizes, prev, pager, next, jumper"
+      :total="400">
+    </el-pagination>
 
+    </lqb-card>
   </div>
 </template>
 <script>
@@ -66,7 +66,74 @@
   export default {
     data () {
       return {
-        orderList: []
+        orderList: [],
+        forms:[
+            {"name":"Input",label:"商品名称","model":"shopName",placeholder:"商品名称"},
+             {"name":"Input",label:"订单编号","model":"orderNO",placeholder:"订单编号"},
+             {"name":"Input",label:"订单状态","addresState":"Kist",placeholder:"订单状态"},
+            {"name":"DatePicker",label:"时间","model":"times",type:"daterange",placeholder:"请选择日期" },
+             
+          ],
+        formvalues:{
+            shopName:"商品名称", 
+            "orderNO":"18541414451",
+            times:null,
+            addresState:0
+          },
+        activeName: '1',
+        tableData5: [{
+          id: '12987122',
+          name: '好滋好味鸡蛋仔',
+          category: '江浙小吃、小吃零食',
+          desc: '荷兰优质淡奶，奶香浓而不腻',
+          address: '上海市普陀区真北路',
+          shop: '王小虎夫妻店',
+          shopId: '10333'
+        }, {
+          id: '12987123',
+          name: '好滋好味鸡蛋仔',
+          category: '江浙小吃、小吃零食',
+          desc: '荷兰优质淡奶，奶香浓而不腻',
+          address: '上海市普陀区真北路',
+          shop: '王小虎夫妻店',
+          shopId: '10333'
+        }, {
+          id: '12987125',
+          name: '好滋好味鸡蛋仔',
+          category: '江浙小吃、小吃零食',
+          desc: '荷兰优质淡奶，奶香浓而不腻',
+          address: '上海市普陀区真北路',
+          shop: '王小虎夫妻店',
+          shopId: '10333'
+        }, {
+          id: '12987126',
+          name: '好滋好味鸡蛋仔',
+          category: '江浙小吃、小吃零食',
+          desc: '荷兰优质淡奶，奶香浓而不腻',
+          address: '上海市普陀区真北路',
+          shop: '王小虎夫妻店',
+          shopId: '10333'
+        }],
+        page:{
+            currentPage:1,
+            pageSize:10,
+            total:null
+        },
+        imgItem:{
+            top:[{
+                label:'商品',model:'name'
+            }],
+            img:{
+                model:'picUrl'
+            },
+            right:[{
+                label:'title',model:'name'
+            },{
+                label:'title',model:'name'
+            },{
+                label:'title',model:'name'
+            }]
+        }  
       }
     },
     methods: {
