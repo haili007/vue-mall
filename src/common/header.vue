@@ -33,8 +33,6 @@
             <div class="nav-list">
                 <div class="nav-item">
                   <router-link class="active" to="/home">首页</router-link>
-                </div>
-                <div class="nav-item">
                   <router-link to="/category/1">包袋</router-link>
                   <router-link to="/category/2">腕表</router-link>
                   <router-link to="/category/3">珠宝</router-link>
