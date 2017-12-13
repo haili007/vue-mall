@@ -85,7 +85,7 @@
     width: 210px;
     border-radius: 6px;
     .avatar {
-      
+
       border-radius: 10px;
       text-align: center;
       img {

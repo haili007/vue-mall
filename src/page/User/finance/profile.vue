@@ -43,7 +43,7 @@
     margin: 5px;
   }
   .ys-row{
-    width: 100%;
+    /* width: 100%; */
     background: white;
     padding: 20px;
   }
@@ -61,10 +61,10 @@
     border-right: none!important;
   }
   .ys-col1{
-    width: 100%;
+    width: 99%;
   }
   .ys-col2{
-    width: 50%;
+    width: 49.5%;
   }
   .ys-col3{
     width: 33%;

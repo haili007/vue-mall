@@ -8,7 +8,7 @@
         </div>
        <div class="search-bar">
           <Search></Search>
-       </div>   
+       </div>
         <div class="ys-top-barcon clearfix">
           <router-link class="turl ys-head-cart fr" target="_blank" to="/cart">
                <b class="iconfont icon icon-gouwuche"></b>购物车
@@ -16,7 +16,7 @@
           </router-link>
             <span v-if="login" class="turl Chead-welcome fr" >
                         <router-link to="/user/buyer/orderList">我的订单</router-link>|
-                        <router-link to="/user/information">账号资料</router-link>|
+                        <router-link to="/user/business/information">账号资料</router-link>|
                         <router-link to="/user/addressList">收货地址</router-link>|
                         <router-link to="/user/support">售后服务</router-link>|
                         <router-link to="/user/coupon">我的优惠</router-link>|
@@ -191,7 +191,7 @@
       .ys-head-logo-img {
         padding-top: 20px;
       }
-      
+
       .ys-top-barcon{
         transition: all .3s ease-in-out;
         width: 1200px;
@@ -234,7 +234,7 @@
 
       .ys-container{
          margin: 0 auto;
-          width: 1200px;  
+          width: 1200px;
       }
       .search-bar{
         position: absolute;
@@ -248,9 +248,9 @@
     margin: 2px;
     color: #f8a120;
 }
-  
 
-  
+
+
 
 </style>
 

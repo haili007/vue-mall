@@ -15,22 +15,27 @@ const user = resolve => require(['/page/User/user'], resolve)
 const orderList = resolve => require(['/page/User/buyer/orderList'], resolve)
 const orderDetail = resolve => require(['/page/User/buyer/orderDetail'], resolve)
 
+//订单
+const orderListSeller = resolve => require(['/page/User/seller/orderList'], resolve)
+const orderDetailSeller = resolve => require(['/page/User/seller/orderDetail'], resolve)
+const orderManage = resolve => require(['/page/User/seller/orderManage'], resolve)
+const BasicInfo = resolve => require(['/page/User/seller/BasicInfo'], resolve)
+const Audit = resolve => require(['/page/User/seller/Audit'], resolve)
+const Check = resolve => require(['/page/User/seller/Check'], resolve)
+
 //消息
 const mymessge = resolve => require(['/page/User/messages/my'], resolve)
 const messgeDetail = resolve => require(['/page/User/messages/detail'], resolve)
-
+//财务
+const flow = resolve => require(['/page/User/finance/flow'], resolve)
+const situation = resolve => require(['/page/User/finance/situation'], resolve)
 
 const information = resolve => require(['/page/User/business/information'], resolve)
 const addressList = resolve => require(['/page/User/children/addressList'], resolve)
 const coupon = resolve => require(['/page/User/children/coupon'], resolve)
 const aihuishou = resolve => require(['/page/User/children/aihuishou'], resolve)
 const support = resolve => require(['/page/User/children/support'], resolve)
-const BasicInfo = resolve => require(['/page/User/business/BasicInfo'], resolve)
-const Audit = resolve => require(['/page/User/business/Audit'], resolve)
-const Check = resolve => require(['/page/User/business/Check'], resolve)
-const Manage = resolve => require(['/page/User/business/Manage'], resolve)
-const Order = resolve => require(['/page/User/business/Order'], resolve)
-const OrderDetail = resolve => require(['/page/User/business/OrderDetail'], resolve)
+
 const checkout = resolve => require(['/page/Checkout/checkout'], resolve)
 const payment = resolve => require(['/page/Order/payment'], resolve)
 const paysuccess = resolve => require(['/page/Order/paysuccess'], resolve)
@@ -73,22 +78,24 @@ export default new Router({
         {path: 'business/information',redirect: '', component: information, name: '商家信息' },
         {path: 'buyer/orderList', name: '买家订单列表', component: orderList},
         {path: 'buyer/orderDetail', name: '订单详情', component: orderDetail},
-
+        //卖家
+        {path: 'seller/orderList', name: '卖家订单列表', component: orderListSeller},
+        {path: 'seller/orderDetail', name: '订单详情', component: orderDetailSeller},
+        {path: 'seller/orderManage', name: '订单管理', component: orderManage},
+        {path: 'seller/basicInfo', name: '基本信息', component: BasicInfo},
+        {path: 'seller/audit', name: '审核', component: Audit},
+        {path: 'seller/check', name: '查看', component: Check},
         //消息
-        {path: 'messages/my', name: '收货地址', component: mymessge},
-        {path: 'messages/detail', name: '收货地址', component: messgeDetail},
-
+        {path: 'messages/my', name: '消息', component: mymessge},
+        {path: 'messages/detail', name: '消息详情', component: messgeDetail},
+        //财务
+        {path: 'finance/flow', name: '财务流水', component: flow},
+        {path: 'finance/situation', name: '财务概况', component: situation},
 
         {path: 'addressList', name: '收货地址', component: addressList},
         {path: 'coupon', name: '我的优惠', component: coupon},
         {path: 'support', name: '售后服务', component: support},
         {path: 'aihuishou', name: '以旧换新', component: aihuishou},
-        {path: 'information/basicInfo', name: '基本信息', component: BasicInfo},
-        {path: 'information/audit', name: '审核', component: Audit},
-        {path: 'information/check', name: '查看', component: Check},
-        {path: 'information/manage', name: '管理', component: Manage},
-        {path: 'information/order', name: '订单', component: Order},
-        {path: 'information/orderDetail', name: '订单详情', component: OrderDetail},
       ]
     },
     {path: '/checkout', name: 'checkout', component: checkout},

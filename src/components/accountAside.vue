@@ -20,10 +20,10 @@
                     <dl>
                         <dt>我是卖家</dt>
                         <dd>
-                            <a href="#">我的销售订单</a>
+                            <router-link to="/user/seller/orderList">我的销售订单</router-link>
                         </dd>
                         <dd>
-                            <a href="#">商品管理</a>
+                            <router-link to="/user/seller/orderManage">商品管理</router-link>
                         </dd>
                     </dl>
                 </li>
@@ -31,10 +31,10 @@
                     <dl>
                         <dt>我的消息</dt>
                         <dd>
-                            <a href="#">系统消息</a>
+                            <router-link to="/user/messages/my?sys">系统消息</router-link>
                         </dd>
                         <dd>
-                            <a href="#">我的消息</a>
+                            <router-link to="/user/messages/my">我的消息</router-link>
                         </dd>
                     </dl>
                 </li>
@@ -50,18 +50,18 @@
                     <dl>
                         <dt>我的财务</dt>
                         <dd>
-                            <a href="#">财务概况</a>
+                            <router-link to="/user/finance/situation">财务概况</router-link>
                         </dd>
                         <dd>
-                            <a href="#">交易流水</a>
+                            <router-link to="/user/finance/flow">交易流水</router-link>
                         </dd>
                     </dl>
                 </li>
-                </ul>
+            </ul>
         </div>
     </div>
 </div>
-  
+
 </template>
 
 <script>
@@ -86,7 +86,7 @@ export default {
        box-shadow: 5px 5px 5px rgba(0 , 0, 0, 0.1);
     }
     .avatar {
-      
+
       border-radius: 10px;
       text-align: center;
       img {
